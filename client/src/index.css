@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Normal 300 (Light) */
+@font-face {
+  font-family: 'sohne';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://glyph.medium.com/font/6fd11d6/0-3j_4g_53_6bu_6c4_6c8_6c9_6cc_6cd_6ci_6cm/sohne-300-normal.woff') format('woff');
+  unicode-range: U+0-7F,U+A0,U+B7,U+200A,U+2014,U+2018,U+2019,U+201C,U+201D,U+2022,U+2026;
+}
+
+/* Normal 400 (Regular) */
+@font-face {
+  font-family: 'sohne';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://glyph.medium.com/font/b492c44/0-3j_4g_53_6bu_6c4_6c8_6c9_6cc_6cd_6ci_6cm/sohne-400-normal.woff') format('woff');
+  unicode-range: U+0-7F,U+A0,U+B7,U+200A,U+2014,U+2018,U+2019,U+201C,U+201D,U+2022,U+2026;
+}
+
+/* Normal 500 (Medium) */
+@font-face {
+  font-family: 'sohne';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://glyph.medium.com/font/df9ba7f/0-3j_4g_53_6bu_6c4_6c8_6c9_6cc_6cd_6ci_6cm/sohne-500-normal.woff') format('woff');
+  unicode-range: U+0-7F,U+A0,U+B7,U+200A,U+2014,U+2018,U+2019,U+201C,U+201D,U+2022,U+2026;
+}
+
+/* Normal 700 (Bold) */
+@font-face {
+  font-family: 'sohne';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://glyph.medium.com/font/cf896f3/0-3j_4g_53_6bu_6c4_6c8_6c9_6cc_6cd_6ci_6cm/sohne-700-normal.woff') format('woff');
+  unicode-range: U+0-7F,U+A0,U+B7,U+200A,U+2014,U+2018,U+2019,U+201C,U+201D,U+2022,U+2026;
+}
+
+/* width */
+::-webkit-scrollbar {
+  height: 5px;
+  
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+  width: 2px !important;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-content > *{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3; /* Görünmesini istediğiniz satır sayısını ayarlayın */
+  text-overflow: ellipsis;
+}
+
+.card-content img {
+  width: 50%;
+  height: 300px;
+}
