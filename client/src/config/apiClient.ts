@@ -7,13 +7,13 @@ const options = {
   withCredentials: true,
 };
 
-const TokenRefreshClient = axios.create(options);
-TokenRefreshClient.interceptors.response.use((response) => response.data);
+export const TokenRefreshClient = axios.create(options);
+TokenRefreshClient.interceptors.response.use((response) => response);
 
 const API = axios.create(options);
 
 API.interceptors.response.use(
-  (response) => response.data,
+  (response) => response,
   async (error) => {
     const { config, response } = error;
     const { status, data } = response || {};
@@ -21,6 +21,7 @@ API.interceptors.response.use(
     if (status === UNAUTHORIZED && data?.errorCode === "InvalidAccessToken") {
       try {
         await TokenRefreshClient.get("/auth/refresh");
+        console.log((await TokenRefreshClient(config)))
         return TokenRefreshClient(config);
       } catch (error) {
         console.log(error);

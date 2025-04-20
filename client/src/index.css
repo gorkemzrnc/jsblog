@@ -78,11 +78,162 @@ input[type="file"]::file-selector-button {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 3; /* Görünmesini istediğiniz satır sayısını ayarlayın */
   text-overflow: ellipsis;
+  -webkit-line-clamp: 3; /* Görünmesini istediğiniz satır sayısını ayarlayın */
 }
 
+.card-content > p:not(:first-child) {
+  display: none;
+}
 .card-content img {
   width: 50%;
   height: 300px;
+}
+
+/* Blog container genel stil */
+.blog-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Başlıklar */
+.blog-content h1 {
+  font-size: 2.5rem;
+  margin: 2rem 0;
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  margin: 1.5rem 0;
+  color: #34495e;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #7f8c8d;
+}
+
+/* Paragraflar */
+.blog-content p {
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
+
+/* Kod blokları */
+.blog-content pre {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border-left: 4px solid #3498db;
+}
+
+.blog-content code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  background-color: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* Değişken tanımlama bölümüne özel */
+.blog-content .variable-section pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border-left-color: #e74c3c;
+}
+
+/* Listeler */
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Asenkron programlama örneği */
+.blog-content .async-example {
+  background-color: #e8f4fc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #3498db;
+}
+
+/* DOM manipülasyon örneği */
+.blog-content .dom-example pre {
+  background-color: #2ecc71;
+  color: white;
+  border-left-color: #27ae60;
+}
+
+/* Sonuç bölümü */
+.blog-content .conclusion {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+  .blog-content {
+    padding: 1rem;
+  }
+  
+  .blog-content h1 {
+    font-size: 2rem;
+  }
+  
+  .blog-content pre {
+    padding: 1rem;
+  }
+}
+
+.ql-editor {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.ql-syntax {
+  background-color: #2c3e50 !important;
+  color: #ecf0f1 !important;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sonner-toast {
+  font-family: var(--font-sans);
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.sonner-toast[data-type="success"] {
+  background: linear-gradient(145deg, #4CAF50 0%, #45a049 100%);
+}
+
+.sonner-toast[data-type="error"] {
+  background: linear-gradient(145deg, #f44336 0%, #d32f2f 100%);
+}
+
+.sonner-toast[data-type="info"] {
+  background: linear-gradient(145deg, #2196F3 0%, #1976D2 100%);
 }

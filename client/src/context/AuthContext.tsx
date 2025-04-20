@@ -1,54 +1,17 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
-import { getUser } from '../lib/api';
-
-export interface UserProps {
-  _id: string;
-  username: string;
-  email: string;
-  role: string;
-  image: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import { createContext, ReactNode } from "react";
+import { User } from "../types";
 
 export interface AuthContextProps {
-  user: UserProps | null;
+  user: User | undefined;
   isLoading: boolean;
-  error: string | null;
-  setUser: React.Dispatch<React.SetStateAction<UserProps | null>>;
+  error: string | unknown;
+  setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setError: React.Dispatch<React.SetStateAction<string | null>>;
+  setError: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-interface ContextProviderProps {
+export interface ContextProviderProps {
   children: ReactNode;
 };
 
 export const AuthContext = createContext<AuthContextProps | undefined>(undefined);
-
-// AuthProvider bileşeni
-export const AuthProvider = ({ children }: ContextProviderProps) => {
-  const [user, setUser] = useState<UserProps | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const data = await getUser();
-        setUser(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchUser();
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ user, isLoading, error, setUser, setIsLoading, setError }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};

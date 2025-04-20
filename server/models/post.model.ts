@@ -2,36 +2,34 @@ import mongoose, { Document, Schema } from "mongoose";
 import { CommentSchema as Comment, CommentDocument } from "./comment.model";
 
 export interface PostDocument extends Document {
+  userId: mongoose.Schema.Types.ObjectId;
   title: string;
   content: string;
-  category: mongoose.Schema.Types.ObjectId;
+  category: mongoose.Schema.Types.ObjectId[];
   likes: mongoose.Schema.Types.ObjectId[];
   comments: CommentDocument[];
-  createdBy: mongoose.Schema.Types.ObjectId;
   createdAt: Date;
   thumbnailImage: string;
-  postImages?: mongoose.Schema.Types.ObjectId[];
 }
 
 const PostSchema = new Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'User'
+  },
   title: {
     type: String, required: true,
   },
   content: {
     type: String, required: true
   },
-  category: {
+  category: [{
     type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true
-  },
+  }],
   likes: [{
     type: mongoose.Schema.Types.ObjectId, ref: 'User'
   }],
   comments: [Comment],
-  thumbnailImage: { type: String, required: true },
-  postImages: [{ type:mongoose.Schema.Types.ObjectId, ref: 'PostImages' }],
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'User'
-  },
+  thumbnailImage: { type: String },
 }, { timestamps: true })
 
 export default mongoose.model<PostDocument>("Post", PostSchema);
